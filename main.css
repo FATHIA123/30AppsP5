@@ -1,0 +1,124 @@
+html {
+    box-sizing: border-box;
+    background: #eeeeee;
+    font-family: 'helvetica neue';
+    font-size: 20px;
+    font-weight: 200;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+/* if you look at the site wrap there is a scale of 98% */
+/* what u can do is when the body has a fixed-nav, the site-wrap is going to be scaled up to one */
+  .site-wrap {
+    max-width: 700px;
+    margin: 70px auto;
+    background: white;
+    padding: 40px;
+    text-align: justify;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
+    transform: scale(0.98);
+    transition: transform 0.8s;
+  }
+  
+  .fixed-nav .site-wrap {
+      transform: scale(1);
+  }
+  /* so this just increase the size of the content page */
+  /* that's why we add a class to the bosy and exteneend to the children */
+
+  header {
+    text-align: center;
+    height: 50vh;
+    background: url(./ricardo-gomez-angel-674154-unsplash.jpg) bottom center no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  h1 {
+    color: white;
+    font-size: 7vw;
+    text-shadow: 3px 4px 0 rgba(0,0,0,0.2);
+  }
+  
+  nav {
+    background: black;
+    top: 0;
+    width: 100%;
+    transition: all 0.5s;
+    position: relative;
+    z-index: 1;
+  }
+
+/* we find our nav bar first, since we added the class on the bosy we want to call the 
+class then target the nav.
+
+then say:
+- when the body has a class of fixed-nav I want the nav itself is going to be 
+      - positon:fixed
+      -and add a box shadow , so when is in that fixed state you have a shadow to 
+      show some depth
+
+*/
+.fixed-nav nav {
+    position: fixed;
+    box-shadow: 0 5px rgba(0, 0, 0, 1);
+}
+
+  nav ul {
+    margin: 0;
+    padding:0;
+    list-style: none;
+    display: flex;
+  }
+  
+  nav li {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* the logo has a max-width of zero.
+  and an overflow of hidden
+  So the logo is there but its not being shown because it has a width of zero */
+li.logo {
+    max-width: 0;
+    overflow: hidden;
+    background: white;
+    transition: all 3s;
+    font-weight: 600;
+    font-size: 30px;
+  }
+  
+  /* we are going to say when the body has a class of fixed-nav the li with the class of logo
+  is going to have a max-width of something bigger than it will ever be */
+  /* So now when we save it the logo slides itself out why? 
+  because we set the logo default to be width of zero 
+  and when u have a max-width of 500px, it is going to TRANSITON: ALL .5s itself in and out */
+/* Why did we use max-width instead of width:0; */
+/* that is becasue you can not animate the width of something to be from zero-auto
+you do have to use a max width inorder to get that transition  */
+  .fixed-nav li.logo {
+      max-width: 500px;
+  }
+  li.logo a {
+    color: black;
+  }
+
+  nav a {
+    text-decoration: none;
+    padding: 20px;
+    display: inline-block;
+    color: white;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
